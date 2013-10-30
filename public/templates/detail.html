@@ -1,0 +1,19 @@
+<div>
+    <h3>{{ title }}</h3>
+    <a href="{{ link }}">{{ link }}</a>
+    <ul>
+    <h3>TF</h3>
+    <li ng-repeat="tf in tfArray">
+        <div>{{tf.rank}}, {{tf.word}}, {{tf.count}}</div>
+    </li>
+    <h3>Reference</h3>
+    <li ng-repeat="paper in refArray">
+        <a href="{{ paper.url }}">{{ paper.title }}</a>
+    </li>
+
+    <h3>Cite</h3>
+	<li ng-repeat="paper in citeArray">
+        <a href="{{ paper.url }}">{{ paper.title }}</a>
+    </li>
+</ul>
+</div>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <div ng-controller="SearchCtrl">
+            <form ng-submit="search()">
+                <input type="text" name="text" ng-model="searchText" />
+                <input type="submit" />
+            </form>
+        </div>
+        <div ng-view></div>
+        <script src="javascripts/angular.js"></script>
+        <script src="javascripts/index.js"></script>
+    </body>
+</html>
