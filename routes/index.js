@@ -36,4 +36,12 @@
                 };
             });
         };
+
+        exports.getTfTwo = function (req, res) {
+            search.getTfTwo(function (err, data){
+                if (!err) {
+                    res.send(data);
+                };
+            });
+        };
 }());

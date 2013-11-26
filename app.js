@@ -33,6 +33,7 @@ app.get('/', routes.index);
 app.get('/findPaper', routes.search);
 app.get('/paperWitch/:id', routes.paperFindWithIndex);
 app.get('/gettfidf', routes.getTF);
+app.get('/gettfidftwo', routes.getTfTwo);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));

@@ -10,7 +10,6 @@
                     "queryString": config
                 },
                 success: function (data){
-                    console.log(data);
                     if (!data || data.length === 0) {
                         callback('error');
                     }else
@@ -50,6 +49,25 @@
            ajaxModel.ajax({
                 method: 'GET',
                 path:'/counttfidf',
+                args:'',
+                success: function (data){
+                    if (!data || data.length === 0) {
+                        callback('error');
+                    }else
+                    {
+                        callback(null, data);
+                    }
+                },
+                error: function (err){
+                    callback(err);
+                }
+            });
+        },
+        
+        getTfTwo: function (callback) {
+           ajaxModel.ajax({
+                method: 'GET',
+                path:'/counttfidftwo',
                 args:'',
                 success: function (data){
                     if (!data || data.length === 0) {

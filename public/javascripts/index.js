@@ -28,18 +28,54 @@ app.controller('ListCtrl', ['$scope', '$http', 'notesService', function (s, h, n
 
 app.controller('DetailCtrl', ['$scope', '$http', '$routeParams', function (s, h, r) {
     h.get('paperWitch/' + r.id).success(function (data) {
-        console.log(data);
-        var jsonRefArray, jsonCiteArray;
-        s.title = data['title'];
-        s.link = data['url'];
-        jsonRefArray = data['jsonRefArray'];
-        jsonCiteArray = data['jsonCiteArray'];
-        s.refArray = jsonRefArray;
-        s.citeArray = jsonCiteArray;
+        // var jsonRefArray, jsonCiteArray;
+        // s.title = data['title'];
+        // s.link = data['url'];
+        // jsonRefArray = data['jsonRefArray'];
+        // jsonCiteArray = data['jsonCiteArray'];
+        // s.refArray = jsonRefArray;
+        // s.citeArray = jsonCiteArray;
         h.get('gettfidf').success(function (data){
-            var tfArray = data;
-            s.tfArray = tfArray;
+            // var tfArray = data;
+            // s.tfArray = tfArray;
+            var dicResultLevel = data['resultUse']
+            var dicResultDict = data['levelDict']
+            //var result0 = dicResultLevel['0']
+            var result1 = dicResultLevel['1']
+            var result2 = dicResultLevel['2']
+            var leve1 = dicResultDict['1']
+            var leve2 = dicResultDict['2']
+            s.level1 = leve1
+            s.level2 = leve2
+            s.resutt0 = result0
+            s.resutt1 = result1
+            s.resutt2 = result2
+
         });
+    });
+}]);
+
+app.controller('DetailCtrl2', ['$scope', '$http', function (s, h) {
+    h.get('gettfidftwo').success(function (data){
+        // var tfArray = data;
+        // s.tfArray = tfArray;
+        var dicResultLevel = data['resultUse']
+        var dicResultDict = data['levelDict']
+        //var result0 = dicResultLevel['0']
+        // var result1 = dicResultLevel['1']
+        // var result2 = dicResultLevel['2']
+        // var result3 = dicResultLevel['3']
+
+        var leve1 = dicResultDict['1']
+        var leve2 = dicResultDict['2']
+        var leve3 = dicResultDict['3']
+        s.level1 = leve1
+        s.level2 = leve2
+        s.level3 = leve3
+        s.result1 = dicResultLevel['1']
+        s.result2 = dicResultLevel['2']
+        s.result3 = dicResultLevel['3']
+
     });
 }]);
 
@@ -60,6 +96,9 @@ app.config(function ($routeProvider) {
         templateUrl: 'templates/result.html'
     }).when('/singlePaper/:id', {
         controller: 'DetailCtrl',
+        templateUrl: 'templates/detail.html'
+    }).when('/testuse', {
+        controller: 'DetailCtrl2',
         templateUrl: 'templates/detail.html'
     }).otherwise({
         redirectTo: '/'
